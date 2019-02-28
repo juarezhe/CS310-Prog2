@@ -1,7 +1,3 @@
-/*
- * Hannah Juarez
- * cssc1481
- */
 package data_structures;
 
 import java.util.Iterator;
