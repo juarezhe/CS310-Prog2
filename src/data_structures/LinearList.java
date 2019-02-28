@@ -19,8 +19,8 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 		Node<T> next, previous;
 		T data;
 
-		public Node(T data) {
-			this.data = data;
+		public Node(T dataToStore) {
+			this.data = dataToStore;
 			this.next = this.previous = null;
 		}
 	}
@@ -44,8 +44,11 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public boolean addFirst(E obj) {
-		// TODO Auto-generated method stub
-		return false;
+		Node<E> newNode = new Node<E>(obj);
+		
+		newNode.next = this.head;
+		this.head = newNode;
+		return true;
 	}
 
 	/*
@@ -54,8 +57,11 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public boolean addLast(E obj) {
-		// TODO Auto-generated method stub
-		return false;
+		Node<E> newNode = new Node<E>(obj);
+		
+		newNode.previous = this.tail;
+		this.tail = newNode;
+		return true;
 	}
 
 	@Override
