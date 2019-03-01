@@ -54,7 +54,7 @@ public class Stack<E extends Comparable<E>> extends LinearList<E> {
 	 * returns true if the object obj is in the stack, otherwise false
 	 */
 	public boolean contains(E obj) {
-		return false;
+		return super.contains(obj);
 
 	}
 
@@ -69,9 +69,10 @@ public class Stack<E extends Comparable<E>> extends LinearList<E> {
 	 * removes the Object obj if it is in the stack and returns true, otherwise
 	 * returns false.
 	 */
+	/**
 	public boolean remove(E obj) {
 		return super.remove(obj) != null;
-	}
+	}**/
 
 	/*
 	 * returns a iterator of the elements in the stack. The elements must be in the

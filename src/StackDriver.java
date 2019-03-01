@@ -8,8 +8,7 @@ public class StackDriver {
 		list = new Stack<Integer>();
 		
 		System.out.println("EMPTY LIST TESTS");
-		modifiedRemove(INTEGER_TO_ADD);
-		modifiedPop();
+		// modifiedRemove(INTEGER_TO_ADD);
 		modifiedPop();
 		modifiedPeek();
 		System.out.println();
@@ -17,7 +16,8 @@ public class StackDriver {
 		System.out.println("ONE-ELEMENT LIST TESTS");
 		modifiedPush(INTEGER_TO_ADD);
 		iterate();
-		modifiedRemove(INTEGER_TO_ADD);
+		// modifiedRemove(INTEGER_TO_ADD);
+		modifiedPop();
 		iterate();
 		System.out.println();
 		
@@ -25,11 +25,13 @@ public class StackDriver {
 		modifiedPush(INTEGER_TO_ADD);
 		modifiedPush(INTEGER_TO_ADD + 5);
 		iterate();
-		modifiedRemove(INTEGER_TO_ADD);
+		// modifiedRemove(INTEGER_TO_ADD);
+		modifiedPop();
 		iterate();
 		modifiedPush(INTEGER_TO_ADD);
 		iterate();
-		modifiedRemove(INTEGER_TO_ADD + 5);
+		// modifiedRemove(INTEGER_TO_ADD + 5);
+		modifiedPop();
 		iterate();
 		modifiedMakeEmpty();
 		System.out.println();
@@ -39,21 +41,25 @@ public class StackDriver {
 		modifiedPush(INTEGER_TO_ADD + 5);
 		modifiedPush(INTEGER_TO_ADD + 10);		
 		iterate();
-		modifiedRemove(INTEGER_TO_ADD);
+		// modifiedRemove(INTEGER_TO_ADD);
+		modifiedPop();
 		iterate();		
 		modifiedPush(INTEGER_TO_ADD);
 		iterate();
-		modifiedRemove(INTEGER_TO_ADD + 10);
+		// modifiedRemove(INTEGER_TO_ADD + 10);
+		modifiedPop();
 		iterate();		
 		modifiedPush(INTEGER_TO_ADD + 10);
 		iterate();
-		modifiedRemove(INTEGER_TO_ADD + 5);
+		// modifiedRemove(INTEGER_TO_ADD + 5);
+		modifiedPop();
 		iterate();
 		modifiedMakeEmpty();
 		System.out.println();
 		
 		System.out.println("CLEARED LIST TESTS");
-		modifiedRemove(INTEGER_TO_ADD);
+		// modifiedRemove(INTEGER_TO_ADD);
+		modifiedPop();
 		modifiedPop();
 		modifiedPop();
 		modifiedPeek();
@@ -66,7 +72,8 @@ public class StackDriver {
 		modifiedContains(INTEGER_TO_ADD);
 		modifiedContains(INTEGER_TO_ADD * 4 + 1);
 		modifiedPush(INTEGER_TO_ADD);
-		modifiedRemove(INTEGER_TO_ADD);
+		// modifiedRemove(INTEGER_TO_ADD);
+		modifiedPop();
 		iterate();
 		modifiedContains(INTEGER_TO_ADD);
 	}
@@ -87,7 +94,7 @@ public class StackDriver {
 		list.push(obj);
 		Integer result = list.peek();
 		
-		System.out.print("addFirst result:\t");
+		System.out.print("push result:\t");
 		if (result.compareTo(obj) == 0)
 			System.out.println(obj + " successfully added");
 		else
@@ -97,7 +104,7 @@ public class StackDriver {
 	public static void modifiedPop() {
 		Integer result = list.pop();
 		
-		System.out.print("removeFirst result:\t");
+		System.out.print("pop result:\t");
 		if (result == null && list.isEmpty())
 			System.out.println("list empty");
 		else if (result != null)
@@ -139,13 +146,14 @@ public class StackDriver {
 	public static void modifiedContains(Integer obj) {
 		boolean result = list.contains(obj);
 		
-		System.out.print("search result:\t\t");
+		System.out.print("search result:\t");
 		if (result == true)
 			System.out.println(obj + " successfully found");
 		else
 			System.out.println(obj + " could not be found");
 	}
 
+	/**
 	public static void modifiedRemove(Integer obj) {
 		boolean result = list.remove(obj);
 		
@@ -156,5 +164,5 @@ public class StackDriver {
 			System.out.println("successfully removed");
 		else
 			System.out.println("not sure what happened...");		
-	}
+	}**/
 }
