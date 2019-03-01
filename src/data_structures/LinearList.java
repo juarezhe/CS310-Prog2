@@ -117,6 +117,8 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public E peekFirst() {
+		if (this.isEmpty())
+			return null;
 		return this.head.data;
 	}
 
@@ -126,6 +128,8 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public E peekLast() {
+		if (this.isEmpty())
+			return null;
 		return this.tail.data;
 	}
 
