@@ -46,7 +46,7 @@ public class Stack<E extends Comparable<E>> extends LinearList<E> {
 	 * returns but does not remove the element on the top of the stack
 	 */
 	public E peek() {
-		return null;
+		return super.peekFirst();
 
 	}
 
