@@ -15,9 +15,9 @@ import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
 
 public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
-	class Node<T> {
-		Node<T> next, previous;
-		T data;
+	private class Node<T> {
+		private Node<T> next, previous;
+		private T data;
 
 		public Node(T dataToStore) {
 			this.data = dataToStore;
@@ -190,8 +190,62 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new IteratorHelper();
+	}
+
+	/*
+	 * IteratorHelper class allows for tracking of changes since Iterator creation.
+	 * Operates in fail-fast mode.
+	 */
+	private class IteratorHelper implements Iterator<E> {
+		private Node<E> current;
+		private long stateCheck;
+
+		/*
+		 * Constructs new IteratorHelper using the head as a starting point for
+		 * iteration. Sets stateCheck to ensure modification has not occurred.
+		 */
+		public IteratorHelper() {
+			this.current = head;
+			this.stateCheck = modificationCounter;
+		}
+
+		/*
+		 * Operates in fail-fast mode. Throws an exception if modification occurs mid
+		 * iteration. Otherwise, returns true when the list has a next item.
+		 */
+		@Override
+		public boolean hasNext() {
+			if (this.stateCheck != modificationCounter)
+				throw new ConcurrentModificationException();
+			if (this.current == null)
+				return false;
+			return this.current.next != null;
+		}
+
+		/*
+		 * If the list has a next item, that item is returned.
+		 */
+		@Override
+		public E next() {
+			if (!hasNext())
+				throw new NoSuchElementException();
+			E dataToReturn = this.current.data;
+			this.current = this.current.next;
+			return (E) dataToReturn;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.Iterator#remove()
+		 * 
+		 * Not a supported operation. Use the outer class's remove() instead.
+		 */
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
 	}
 
 }
