@@ -37,7 +37,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 		this.currentSize = 0;
 		this.modificationCounter = 0;
 	}
-
+	
 	/*
 	 * Adds the Object obj to the beginning of list and returns true if the list is
 	 * not full. returns false and aborts the insertion if the list is full.
@@ -45,11 +45,16 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	@Override
 	public boolean addFirst(E obj) {
 		Node<E> newNode = new Node<E>(obj);
-
 		newNode.next = this.head;
+		if (this.head != null)
+			this.head.previous = newNode;
 		this.head = newNode;
-		if (this.currentSize == 0)
+		
+		// if (this.tail == this.head)
+		//	this.tail.previous = this.head;
+		if (this.tail == null)
 			this.tail = this.head;
+		
 		this.currentSize++;
 		this.modificationCounter++;
 		return true;
@@ -62,11 +67,16 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	@Override
 	public boolean addLast(E obj) {
 		Node<E> newNode = new Node<E>(obj);
-		
 		newNode.previous = this.tail;
+		if (this.tail != null)
+			this.tail.next = newNode;
 		this.tail = newNode;
-		if (this.currentSize == 0)
+		
+		// if (this.head == this.tail)
+		//	this.head.next = this.tail;
+		if (this.head == null)
 			this.head = this.tail;
+		
 		this.currentSize++;
 		this.modificationCounter++;
 		return true;
@@ -82,6 +92,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 			return null;
 		E dataToReturn = this.head.data;
 		this.head = this.head.next;
+		this.head.previous = null;
 		this.currentSize--;
 		this.modificationCounter++;
 		return (E) dataToReturn;
@@ -97,6 +108,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 			return null;
 		E dataToReturn = this.tail.data;
 		this.tail = this.tail.previous;
+		this.tail.next = null;
 		this.currentSize--;
 		this.modificationCounter++;
 		return (E) dataToReturn;
@@ -227,9 +239,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 		public boolean hasNext() {
 			if (this.stateCheck != modificationCounter)
 				throw new ConcurrentModificationException();
-			if (this.current == null)
-				return false;
-			return this.current.next != null;
+			return this.current != null;
 		}
 
 		/*
