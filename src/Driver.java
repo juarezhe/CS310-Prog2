@@ -29,6 +29,16 @@ public class Driver {
 		
 		modifiedRemoveLast();
 		iterate();
+		
+		modifiedClear();
+		modifiedRemoveFirst();
+		modifiedRemoveLast();
+		modifiedPeekFirst();
+		modifiedPeekLast();
+		iterate();
+		
+		buildList(1000);
+		iterate();
 	}
 	
 	public static void modifiedPeekFirst() {
@@ -105,9 +115,27 @@ public class Driver {
 	}
 	
 	public static void iterate() {
+		int itemsInLine = 0;
+		
 		System.out.println("Should print " + list.size() + " elements from " + list.peekFirst() + " to " + list.peekLast() + ":");
-		for (Integer node : list)
+		for (Integer node : list) {
+			if (itemsInLine == 25) {
+				System.out.println();
+				itemsInLine = 0;
+			}
 			System.out.print(node + ", ");
+			itemsInLine++;
+		}
 		System.out.println();
+	}
+
+	public static void modifiedClear() {
+		System.out.println("Clear");
+		list.clear();
+	}
+
+	public static void buildList(int listSize) {
+		for(int n = 1; n <= listSize; n++)
+			list.addFirst(n);
 	}
 }

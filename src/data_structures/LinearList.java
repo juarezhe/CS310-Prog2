@@ -45,16 +45,13 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	@Override
 	public boolean addFirst(E obj) {
 		Node<E> newNode = new Node<E>(obj);
+		
 		newNode.next = this.head;
 		if (this.head != null)
 			this.head.previous = newNode;
 		this.head = newNode;
-		
-		// if (this.tail == this.head)
-		//	this.tail.previous = this.head;
 		if (this.tail == null)
 			this.tail = this.head;
-		
 		this.currentSize++;
 		this.modificationCounter++;
 		return true;
@@ -67,16 +64,13 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	@Override
 	public boolean addLast(E obj) {
 		Node<E> newNode = new Node<E>(obj);
+		
 		newNode.previous = this.tail;
 		if (this.tail != null)
 			this.tail.next = newNode;
 		this.tail = newNode;
-		
-		// if (this.head == this.tail)
-		//	this.head.next = this.tail;
 		if (this.head == null)
 			this.head = this.tail;
-		
 		this.currentSize++;
 		this.modificationCounter++;
 		return true;
@@ -134,7 +128,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public E peekFirst() {
-		if (this.isEmpty())
+		if (this.head == null)
 			return null;
 		return this.head.data;
 	}
@@ -145,7 +139,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public E peekLast() {
-		if (this.isEmpty())
+		if (this.tail == null)
 			return null;
 		return this.tail.data;
 	}
