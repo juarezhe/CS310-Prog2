@@ -68,8 +68,9 @@ public class Driver {
 		iterate();
 		modifiedContains(INTEGER_TO_ADD);
 		modifiedContains(INTEGER_TO_ADD * 4 + 1);
+		modifiedAddLast(INTEGER_TO_ADD);
 		modifiedRemove(INTEGER_TO_ADD);
-		iterate();		
+		iterate();
 		modifiedContains(INTEGER_TO_ADD);
 	}
 	
