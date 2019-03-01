@@ -3,42 +3,74 @@ import data_structures.LinearListADT;
 
 public class Driver {
 	private static LinearListADT<Integer> list;
+	private static Integer INTEGER_TO_ADD = 10;
 
 	public static void main(String[] args) {
 		list = new LinearList<Integer>();
 		
+		System.out.println("EMPTY LIST TESTS");
+		modifiedRemove(INTEGER_TO_ADD);
 		modifiedRemoveFirst();
 		modifiedRemoveLast();
 		modifiedPeekFirst();
 		modifiedPeekLast();
+		System.out.println();
 		
-		modifiedAddFirst(10);
+		System.out.println("ONE-ELEMENT LIST TESTS");
+		modifiedAddFirst(INTEGER_TO_ADD);
 		iterate();
-		
-		modifiedAddLast(15);
+		modifiedRemove(INTEGER_TO_ADD);
 		iterate();
+		System.out.println();
 		
-		modifiedAddFirst(20);
+		System.out.println("TWO-ELEMENT LIST TESTS");
+		modifiedAddFirst(INTEGER_TO_ADD);
+		modifiedAddFirst(INTEGER_TO_ADD + 5);
 		iterate();
-		
-		modifiedAddLast(25);
+		modifiedRemove(INTEGER_TO_ADD);
 		iterate();
-		
-		modifiedRemoveFirst();
+		modifiedAddLast(INTEGER_TO_ADD);
 		iterate();
-		
-		modifiedRemoveLast();
+		modifiedRemove(INTEGER_TO_ADD + 5);
 		iterate();
-		
 		modifiedClear();
+		System.out.println();
+		
+		System.out.println("THREE-ELEMENT LIST TESTS");
+		modifiedAddFirst(INTEGER_TO_ADD);
+		modifiedAddFirst(INTEGER_TO_ADD + 5);
+		modifiedAddFirst(INTEGER_TO_ADD + 10);		
+		iterate();
+		modifiedRemove(INTEGER_TO_ADD);
+		iterate();		
+		modifiedAddLast(INTEGER_TO_ADD);
+		iterate();
+		modifiedRemove(INTEGER_TO_ADD + 10);
+		iterate();		
+		modifiedAddFirst(INTEGER_TO_ADD + 10);
+		iterate();
+		modifiedRemove(INTEGER_TO_ADD + 5);
+		iterate();
+		modifiedClear();
+		System.out.println();
+		
+		System.out.println("CLEARED LIST TESTS");
+		modifiedRemove(INTEGER_TO_ADD);
 		modifiedRemoveFirst();
 		modifiedRemoveLast();
 		modifiedPeekFirst();
 		modifiedPeekLast();
 		iterate();
+		System.out.println();
 		
-		buildList(1000);
+		System.out.println("LARGE LISTS TESTS");
+		buildList(INTEGER_TO_ADD * 4);
 		iterate();
+		modifiedContains(INTEGER_TO_ADD);
+		modifiedContains(INTEGER_TO_ADD * 4 + 1);
+		modifiedRemove(INTEGER_TO_ADD);
+		iterate();		
+		modifiedContains(INTEGER_TO_ADD);
 	}
 	
 	public static void modifiedPeekFirst() {
@@ -46,11 +78,11 @@ public class Driver {
 		
 		System.out.print("peekFirst result:\t");
 		if (result == null && list.isEmpty())
-			System.out.println(result + " (list empty)");
-		else if (result != null && !list.isEmpty())
-			System.out.println(result + " (success!)");
+			System.out.println("list empty");
+		else if (result != null)
+			System.out.println(result + " successfully found");
 		else
-			System.out.println("Unsure what happened.");
+			System.out.println("not sure what happened...");
 	}
 	
 	public static void modifiedPeekLast() {
@@ -58,11 +90,11 @@ public class Driver {
 		
 		System.out.print("peekLast result:\t");
 		if (result == null && list.isEmpty())
-			System.out.println(result + " (list empty)");
-		else if (result != null && !list.isEmpty())
-			System.out.println(result + " (success!)");
+			System.out.println("list empty");
+		else if (result != null)
+			System.out.println(result + " successfully found");
 		else
-			System.out.println("Unsure what happened.");
+			System.out.println("not sure what happened...");
 	}
 	
 	public static void modifiedAddFirst(Integer obj) {
@@ -70,9 +102,9 @@ public class Driver {
 		
 		System.out.print("addFirst result:\t");
 		if (result == true)
-			System.out.println(result + " (success!)");
+			System.out.println(obj + " successfully added");
 		else
-			System.out.println("Unsure what happened.");
+			System.out.println("not sure what happened...");
 	}
 	
 	public static void modifiedAddLast(Integer obj) {
@@ -80,9 +112,9 @@ public class Driver {
 		
 		System.out.print("addLast result:\t\t");
 		if (result == true)
-			System.out.println(result + " (success!)");
+			System.out.println(obj + " successfully added");
 		else
-			System.out.println("Unsure what happened.");
+			System.out.println("not sure what happened...");
 	}
 	
 	public static void modifiedRemoveFirst() {
@@ -90,11 +122,11 @@ public class Driver {
 		
 		System.out.print("removeFirst result:\t");
 		if (result == null && list.isEmpty())
-			System.out.println(result + " (list empty)");
+			System.out.println("list empty");
 		else if (result != null)
-			System.out.println(result + " (success!)");
+			System.out.println(result + " successfully removed");
 		else
-			System.out.println("Unsure what happened.");
+			System.out.println("not sure what happened...");
 	}
 	
 	public static void modifiedRemoveLast() {
@@ -102,11 +134,11 @@ public class Driver {
 		
 		System.out.print("removeLast result:\t");
 		if (result == null && list.isEmpty())
-			System.out.println(result + " (list empty)");
+			System.out.println("list empty");
 		else if (result != null)
-			System.out.println(result + " (success!)");
+			System.out.println(result + " successfully removed");
 		else
-			System.out.println("Unsure what happened.");
+			System.out.println("not sure what happened...");
 	}
 	
 	public static void modifiedSize() {
@@ -119,7 +151,7 @@ public class Driver {
 		
 		System.out.println("Should print " + list.size() + " elements from " + list.peekFirst() + " to " + list.peekLast() + ":");
 		for (Integer node : list) {
-			if (itemsInLine == 25) {
+			if (itemsInLine == 50) {
 				System.out.println();
 				itemsInLine = 0;
 			}
@@ -130,12 +162,34 @@ public class Driver {
 	}
 
 	public static void modifiedClear() {
-		System.out.println("Clear");
+		System.out.println("clear");
 		list.clear();
 	}
 
-	public static void buildList(int listSize) {
+	public static void buildList(Integer listSize) {
 		for(int n = 1; n <= listSize; n++)
 			list.addFirst(n);
+	}
+
+	public static void modifiedContains(Integer obj) {
+		boolean result = list.contains(obj);
+		
+		System.out.print("search result:\t\t");
+		if (result == true)
+			System.out.println(obj + " successfully found");
+		else
+			System.out.println(obj + " could not be found");
+	}
+
+	public static void modifiedRemove(Integer obj) {
+		Integer result = list.remove(obj);
+		
+		System.out.print("remove result:\t\t");
+		if (result == null && list.isEmpty())
+			System.out.println("list empty");
+		else if (result != null)
+			System.out.println(result + " successfully removed");
+		else
+			System.out.println("not sure what happened...");		
 	}
 }

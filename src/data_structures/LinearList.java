@@ -18,7 +18,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	private Node<E> head, tail;
 	private int currentSize;
 	private long modificationCounter;
-	
+
 	private class Node<T> {
 		private Node<T> next, previous;
 		private T data;
@@ -37,7 +37,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 		this.currentSize = 0;
 		this.modificationCounter = 0;
 	}
-	
+
 	/*
 	 * Adds the Object obj to the beginning of list and returns true if the list is
 	 * not full. returns false and aborts the insertion if the list is full.
@@ -45,7 +45,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	@Override
 	public boolean addFirst(E obj) {
 		Node<E> newNode = new Node<E>(obj);
-		
+
 		newNode.next = this.head;
 		if (this.head != null)
 			this.head.previous = newNode;
@@ -64,7 +64,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	@Override
 	public boolean addLast(E obj) {
 		Node<E> newNode = new Node<E>(obj);
-		
+
 		newNode.previous = this.tail;
 		if (this.tail != null)
 			this.tail.next = newNode;
@@ -82,11 +82,16 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public E removeFirst() {
-		if (this.isEmpty())
+		if (this.head == null)
 			return null;
 		E dataToReturn = this.head.data;
-		this.head = this.head.next;
-		this.head.previous = null;
+		
+		if (this.head == this.tail)
+			this.head = this.tail = null;
+		else {
+			this.head = this.head.next;
+			this.head.previous = null;
+		}
 		this.currentSize--;
 		this.modificationCounter++;
 		return (E) dataToReturn;
@@ -98,11 +103,16 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public E removeLast() {
-		if (this.isEmpty())
+		if (this.tail == null)
 			return null;
 		E dataToReturn = this.tail.data;
-		this.tail = this.tail.previous;
-		this.tail.next = null;
+		
+		if (this.tail == this.head)
+			this.tail = this.head = null;
+		else {
+			this.tail = this.tail.previous;
+			this.tail.next = null;
+		}
 		this.currentSize--;
 		this.modificationCounter++;
 		return (E) dataToReturn;
@@ -118,8 +128,27 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public E remove(E obj) {
-		// TODO Auto-generated method stub
-		return null;
+		Node<E> curr = this.head;
+		E dataToReturn = null;
+
+		while (curr != null) {
+			if (curr.data.compareTo(obj) == 0) {
+				dataToReturn = curr.data;
+				break;
+			}
+			curr = curr.next;
+		}
+		if (dataToReturn == null)
+			return null;
+		if (curr == this.head)
+			return (E) removeFirst();
+		if (curr == this.tail)
+			return (E) removeLast();
+		curr.previous.next = curr.next;
+		curr.next.previous = curr.previous;
+		this.currentSize--;
+		this.modificationCounter++;
+		return (E) dataToReturn;
 	}
 
 	/*
@@ -150,8 +179,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public boolean contains(E obj) {
-		// TODO Auto-generated method stub
-		return false;
+		return find(obj) != null;
 	}
 
 	/*
@@ -161,7 +189,13 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public E find(E obj) {
-		// TODO Auto-generated method stub
+		Node<E> curr = head;
+
+		while (curr != null) {
+			if (curr.data.compareTo(obj) == 0)
+				return (E) curr.data;
+			curr = curr.next;
+		}
 		return null;
 	}
 
