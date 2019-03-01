@@ -15,6 +15,10 @@ import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
 
 public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
+	private Node<E> head, tail;
+	private int currentSize;
+	private long modificationCounter;
+	
 	private class Node<T> {
 		private Node<T> next, previous;
 		private T data;
@@ -24,10 +28,6 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 			this.next = this.previous = null;
 		}
 	}
-
-	private Node<E> head, tail;
-	private int currentSize;
-	private long modificationCounter;
 
 	/*
 	 * Default constructor
@@ -48,6 +48,8 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 
 		newNode.next = this.head;
 		this.head = newNode;
+		if (this.currentSize == 0)
+			this.tail = this.head;
 		this.currentSize++;
 		this.modificationCounter++;
 		return true;
@@ -60,8 +62,11 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	@Override
 	public boolean addLast(E obj) {
 		Node<E> newNode = new Node<E>(obj);
+		
 		newNode.previous = this.tail;
 		this.tail = newNode;
+		if (this.currentSize == 0)
+			this.head = this.tail;
 		this.currentSize++;
 		this.modificationCounter++;
 		return true;
