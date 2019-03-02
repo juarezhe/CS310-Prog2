@@ -2,7 +2,7 @@ package data_structures;
 
 import java.util.Iterator;
 
-public class Stack<E extends Comparable<E>> implements Iterable<E>{
+public class Stack<E extends Comparable<E>> implements Iterable<E> {
 	private LinearListADT<E> stack;
 	
 	/*
