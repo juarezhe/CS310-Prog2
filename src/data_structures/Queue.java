@@ -3,59 +3,62 @@ package data_structures;
 import java.util.Iterator;
 
 public class Queue<E extends Comparable<E>> implements Iterable<E> {
+	private LinearListADT<E> queue;
+	
+	/*
+	 * Default constructor
+	 */
+	public Queue() {
+		this.queue = new LinearList<E>();
+	}
 
 	/*
 	 * inserts the object obj into the queue
 	 */
 	public void enqueue(E obj) {
-
+		this.queue.addLast(obj);
 	}
 
 	/*
 	 * removes and returns the object at the front of the queue
 	 */
 	public E dequeue() {
-		return null;
-
+		return (E) this.queue.removeFirst();
 	}
 
 	/*
 	 * returns the number of objects currently in the queue
 	 */
 	public int size() {
-		return 0;
-
+		return this.queue.size();
 	}
 
 	/*
 	 * returns true if the queue is empty, otherwise false
 	 */
 	public boolean isEmpty() {
-		return false;
-
+		return this.queue.isEmpty();
 	}
 
 	/*
 	 * returns but does not remove the object at the front of the queue
 	 */
 	public E peek() {
-		return null;
-
+		return (E) this.queue.peekFirst();
 	}
 
 	/*
 	 * returns true if the Object obj is in the queue
 	 */
 	public boolean contains(E obj) {
-		return false;
-
+		return this.queue.contains(obj);
 	}
 
 	/*
 	 * returns the queue to an empty state
 	 */
 	public void makeEmpty() {
-
+		this.queue.clear();
 	}
 
 	/*
@@ -63,8 +66,7 @@ public class Queue<E extends Comparable<E>> implements Iterable<E> {
 	 * returns false.
 	 */
 	public boolean remove(E obj) {
-		return false;
-
+		return this.queue.remove(obj) != null;
 	}
 
 	/*
@@ -72,7 +74,6 @@ public class Queue<E extends Comparable<E>> implements Iterable<E> {
 	 * same sequence as dequeue would return them.
 	 */
 	public Iterator<E> iterator() {
-		return null;
-
+		return this.queue.iterator();
 	}
 }

@@ -9,21 +9,21 @@ public class Stack<E extends Comparable<E>> implements Iterable<E> {
 	 * Default constructor
 	 */
 	public Stack() {
-		stack = new LinearList<E>();
+		this.stack = new LinearList<E>();
 	}
 
 	/*
 	 * inserts the object obj into the stack
 	 */
 	public void push(E obj) {
-		stack.addFirst(obj);
+		this.stack.addFirst(obj);
 	}
 
 	/*
 	 * pops and returns the element on the top of the stack
 	 */
 	public E pop() {
-		return (E) stack.removeFirst();
+		return (E) this.stack.removeFirst();
 
 	}
 
@@ -31,7 +31,7 @@ public class Stack<E extends Comparable<E>> implements Iterable<E> {
 	 * returns the number of elements currently in the stack
 	 */
 	public int size() {
-		return stack.size();
+		return this.stack.size();
 
 	}
 
@@ -39,7 +39,7 @@ public class Stack<E extends Comparable<E>> implements Iterable<E> {
 	 * return true if the stack is empty, otherwise false
 	 */
 	public boolean isEmpty() {
-		return stack.isEmpty();
+		return this.stack.isEmpty();
 
 	}
 
@@ -47,7 +47,7 @@ public class Stack<E extends Comparable<E>> implements Iterable<E> {
 	 * returns but does not remove the element on the top of the stack
 	 */
 	public E peek() {
-		return stack.peekFirst();
+		return (E) this.stack.peekFirst();
 
 	}
 
@@ -63,7 +63,7 @@ public class Stack<E extends Comparable<E>> implements Iterable<E> {
 	 * returns the stack to an empty state
 	 */
 	public void makeEmpty() {
-		stack.clear();
+		this.stack.clear();
 	}
 
 	/*
@@ -71,7 +71,7 @@ public class Stack<E extends Comparable<E>> implements Iterable<E> {
 	 * returns false.
 	 */
 	public boolean remove(E obj) {
-		return stack.remove(obj) != null;
+		return this.stack.remove(obj) != null;
 	}
 
 	/*
@@ -79,7 +79,7 @@ public class Stack<E extends Comparable<E>> implements Iterable<E> {
 	 * same sequence as pop() would return them.
 	 */
 	public Iterator<E> iterator() {
-		return stack.iterator();
+		return this.stack.iterator();
 
 	}
 }
