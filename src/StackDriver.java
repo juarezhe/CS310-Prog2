@@ -112,12 +112,12 @@ public class StackDriver {
 		int itemsInLine = 0;
 		
 		System.out.println("Should print " + list.size() + " elements starting with " + list.peek() + ":");
-		for (Integer node : list) {
+		for (Integer obj : list) {
 			if (itemsInLine == 50) {
 				System.out.println();
 				itemsInLine = 0;
 			}
-			System.out.print(node + ", ");
+			System.out.print(obj + ", ");
 			itemsInLine++;
 		}
 		System.out.println();
