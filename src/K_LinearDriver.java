@@ -1,6 +1,6 @@
 import data_structures.*;
 
-public class LinearListDriverKarajo {
+public class K_LinearDriver {
 	private static LinearListADT<Integer> list;
 	private static final int TEST_LOOP_COUNT = 5;
 
