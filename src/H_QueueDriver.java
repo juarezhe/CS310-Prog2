@@ -1,6 +1,6 @@
 import data_structures.Queue;
 
-public class QueueDriver {
+public class H_QueueDriver {
 	private static Queue<Integer> list;
 	private static Integer INTEGER_TO_ADD = 10;
 
