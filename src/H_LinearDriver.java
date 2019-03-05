@@ -145,7 +145,7 @@ public class H_LinearDriver {
 		emptyListTest();
 		oneElementTest();
 		twoElementTest();
-		threeElementTest();		
+		threeElementTest();
 		largeListTest();
 		emptyListTest();
 	}
@@ -232,7 +232,7 @@ public class H_LinearDriver {
 		modifiedClear();
 		System.out.println();
 	}
-	
+
 	public static void largeListTest() {
 		System.out.println("LARGE LISTS TESTS");
 		buildList(1000);
@@ -246,7 +246,7 @@ public class H_LinearDriver {
 		modifiedClear();
 		System.out.println();
 	}
-	
+
 	public static void modifiedPeekFirst() {
 		Pokemon result = list.peekFirst();
 
