@@ -2,6 +2,7 @@ import data_structures.*;
 
 public class H_LinearDriver {
 	private static LinearListADT<Pokemon> list;
+	private static final Pokemon TEST_POKEMON = new Pokemon("eevee");
 
 	private static class Pokemon implements Comparable<Pokemon> {
 		private static final int LAST_POKEMON = 809;
@@ -152,40 +153,30 @@ public class H_LinearDriver {
 
 	public static void emptyListTest() {
 		System.out.println("EMPTY LIST TESTS");
-		modifiedRemove(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		modifiedRemove(TEST_POKEMON);
 		modifiedRemoveFirst();
 		modifiedRemoveLast();
 		modifiedPeekFirst();
 		modifiedPeekLast();
+		iterate();
 		System.out.println();
 	}
 
 	public static void oneElementTest() {
 		System.out.println("ONE-ELEMENT LIST TESTS");
 		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		modifiedPeekFirst();
-		modifiedPeekLast();
 		iterate();
 		modifiedRemoveFirst();
-		modifiedPeekFirst();
-		modifiedPeekLast();
 		iterate();
 		modifiedAddLast(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		modifiedPeekFirst();
-		modifiedPeekLast();
 		iterate();
 		modifiedRemoveLast();
-		modifiedPeekFirst();
-		modifiedPeekLast();
 		iterate();
-		modifiedAddFirst(new Pokemon("eevee"));
-		modifiedPeekFirst();
-		modifiedPeekLast();
+		modifiedAddFirst(TEST_POKEMON);
 		iterate();
-		modifiedRemove(new Pokemon("eevee"));
-		modifiedPeekFirst();
-		modifiedPeekLast();
+		modifiedRemove(TEST_POKEMON);
 		iterate();
+		modifiedClear();
 		System.out.println();
 	}
 
@@ -193,41 +184,34 @@ public class H_LinearDriver {
 		System.out.println("TWO-ELEMENT LIST TESTS");
 		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
 		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		modifiedPeekFirst();
-		modifiedPeekLast();
 		iterate();
 		modifiedRemoveLast();
+		iterate();
 		modifiedAddLast(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		modifiedPeekFirst();
-		modifiedPeekLast();
 		iterate();
 		modifiedRemoveFirst();
-		modifiedAddFirst(new Pokemon("eevee"));
-		modifiedPeekFirst();
-		modifiedPeekLast();
 		iterate();
-		modifiedRemove(new Pokemon("eevee"));
-		modifiedPeekFirst();
-		modifiedPeekLast();
+		modifiedAddFirst(TEST_POKEMON);
 		iterate();
+		modifiedRemove(TEST_POKEMON);
+		iterate();
+		modifiedClear();
 		System.out.println();
 	}
 
 	public static void threeElementTest() {
 		System.out.println("THREE-ELEMENT LIST TESTS");
 		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		modifiedAddFirst(TEST_POKEMON);
 		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
 		iterate();
-		modifiedRemove(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		iterate();
+		modifiedRemoveFirst();
 		modifiedAddLast(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
 		iterate();
-		modifiedRemove(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		iterate();
+		modifiedRemoveLast();
 		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
 		iterate();
-		modifiedRemove(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		modifiedRemove(TEST_POKEMON);
 		iterate();
 		modifiedClear();
 		System.out.println();
@@ -237,12 +221,8 @@ public class H_LinearDriver {
 		System.out.println("LARGE LISTS TESTS");
 		buildList(1000);
 		iterate();
-		modifiedContains(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		modifiedContains(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		modifiedAddLast(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		modifiedRemove(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		iterate();
-		modifiedContains(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		while (list.contains(TEST_POKEMON))
+			modifiedRemove(TEST_POKEMON);
 		modifiedClear();
 		System.out.println();
 	}
@@ -298,7 +278,7 @@ public class H_LinearDriver {
 		if (result == null && list.isEmpty())
 			System.out.println("list empty");
 		else if (result != null)
-			System.out.println(result + " successfully removed");
+			System.out.println("removed " + result);
 		else
 			System.out.println("not sure what happened...");
 	}
@@ -310,7 +290,7 @@ public class H_LinearDriver {
 		if (result == null && list.isEmpty())
 			System.out.println("list empty");
 		else if (result != null)
-			System.out.println(result + " successfully removed");
+			System.out.println("removed " + result);
 		else
 			System.out.println("not sure what happened...");
 	}
@@ -322,7 +302,7 @@ public class H_LinearDriver {
 		if (result == null && list.isEmpty())
 			System.out.println("list empty");
 		else if (result != null)
-			System.out.println(result + " successfully removed");
+			System.out.println("removed " + result);
 		else
 			System.out.println(obj + " does not exist in the list");
 	}
