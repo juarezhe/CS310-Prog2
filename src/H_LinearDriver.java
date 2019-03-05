@@ -1,7 +1,7 @@
 import data_structures.LinearList;
 import data_structures.LinearListADT;
 
-public class H_LinearListDriver {
+public class H_LinearDriver {
 	private static LinearListADT<Pokemon> list;
 
 	private static class Pokemon implements Comparable<Pokemon> {
