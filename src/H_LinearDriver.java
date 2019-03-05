@@ -1,5 +1,4 @@
-import data_structures.LinearList;
-import data_structures.LinearListADT;
+import data_structures.*;
 
 public class H_LinearDriver {
 	private static LinearListADT<Pokemon> list;
