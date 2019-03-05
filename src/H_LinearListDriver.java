@@ -3,7 +3,6 @@ import data_structures.LinearListADT;
 
 public class H_LinearListDriver {
 	private static LinearListADT<Pokemon> list;
-	// private static Integer INTEGER_TO_ADD = 10;
 
 	private static class Pokemon implements Comparable<Pokemon> {
 		private static final int LAST_POKEMON = 809;
@@ -111,7 +110,6 @@ public class H_LinearListDriver {
 			this.mName = pokemonNames[number];
 		}
 
-		@SuppressWarnings("unused")
 		public Pokemon(String name) {
 			int idx;
 			for (idx = 1; idx <= LAST_POKEMON; idx++) {
