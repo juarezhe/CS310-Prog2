@@ -6,7 +6,7 @@ public class H_LinearDriver {
 
 	private static class Pokemon implements Comparable<Pokemon> {
 		private static final int LAST_POKEMON = 809;
-		private String[] pokemonNames = { null, "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon",
+		private static final String[] POKEMON_NAMES = { null, "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon",
 				"Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle",
 				"Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow",
 				"Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "NidoranM", "Nidorina", "Nidoqueen",
@@ -103,27 +103,38 @@ public class H_LinearDriver {
 		private int mNumber;
 		private String mName;
 
+		/*
+		 * Constructor - creates new Pokemon using National Pokedex number
+		 */
 		public Pokemon(int number) {
 			if (number < 1 || number > 809)
 				throw new RuntimeException("No such Pokemon.");
 			this.mNumber = number;
-			this.mName = pokemonNames[number];
+			this.mName = POKEMON_NAMES[number];
 		}
 
+		/*
+		 * Constructor - creates new Pokemon using name (capitalization doesn't matter)
+		 */
 		public Pokemon(String name) {
 			int idx;
 			for (idx = 1; idx <= LAST_POKEMON; idx++) {
-				if (pokemonNames[idx].toLowerCase().compareTo(name.toLowerCase()) == 0)
+				if (POKEMON_NAMES[idx].toLowerCase().compareTo(name.toLowerCase()) == 0)
 					break;
 			}
 			if (idx == LAST_POKEMON + 1)
 				throw new RuntimeException("No such Pokemon.");
 			else {
 				this.mNumber = idx;
-				this.mName = pokemonNames[idx];
+				this.mName = POKEMON_NAMES[idx];
 			}
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * @see java.lang.Object#toString()
+		 * Output: [###-Name]
+		 */
 		@Override
 		public String toString() {
 			String stringToReturn = "[" + this.mNumber + "-" + this.mName + "]";
