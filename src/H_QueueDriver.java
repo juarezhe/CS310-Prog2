@@ -146,7 +146,7 @@ public class H_QueueDriver {
 		int elementCount = 0;
 		int itemsInLine = 0;
 
-		System.out.println("iterate result:");
+		System.out.print("iterate result:\t\t");
 		for (Pokemon node : queue) {
 			if (elementCount == queue.size() - 1) {
 				System.out.print(node);
@@ -154,6 +154,7 @@ public class H_QueueDriver {
 			}
 			if (itemsInLine == 10) {
 				System.out.println();
+				System.out.print("\t\t\t");
 				itemsInLine = 0;
 			}
 			System.out.print(node + ", ");

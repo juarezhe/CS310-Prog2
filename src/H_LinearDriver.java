@@ -204,7 +204,7 @@ public class H_LinearDriver {
 		int elementCount = 0;
 		int itemsInLine = 0;
 
-		System.out.println("iterate result:");
+		System.out.print("iterate result:\t\t");
 		for (Pokemon node : list) {
 			if (elementCount == list.size() - 1) {
 				System.out.print(node);
@@ -212,6 +212,7 @@ public class H_LinearDriver {
 			}
 			if (itemsInLine == 10) {
 				System.out.println();
+				System.out.print("\t\t\t");
 				itemsInLine = 0;
 			}
 			System.out.print(node + ", ");

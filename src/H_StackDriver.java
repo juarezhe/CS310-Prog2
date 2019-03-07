@@ -285,7 +285,7 @@ public class H_StackDriver {
 		int elementCount = 0;
 		int itemsInLine = 0;
 
-		System.out.println("iterate result:");
+		System.out.print("iterate result:\t\t");
 		for (Pokemon node : stack) {
 			if (elementCount == stack.size() - 1) {
 				System.out.print(node);
@@ -293,6 +293,7 @@ public class H_StackDriver {
 			}
 			if (itemsInLine == 10) {
 				System.out.println();
+				System.out.print("\t\t\t");
 				itemsInLine = 0;
 			}
 			System.out.print(node + ", ");
