@@ -1,4 +1,4 @@
-import data_structures.Queue;
+import data_structures.*;
 
 public class H_QueueDriver {
 	private static Queue<Pokemon> queue;
