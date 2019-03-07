@@ -158,6 +158,10 @@ public class H_LinearDriver {
 		largeListTest();
 		emptyListTest();
 	}
+	
+	public static Pokemon generatePokemon() {
+		return new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1));
+	}
 
 	public static void emptyListTest() {
 		System.out.println("EMPTY LIST TESTS");
@@ -172,11 +176,11 @@ public class H_LinearDriver {
 
 	public static void oneElementTest() {
 		System.out.println("ONE-ELEMENT LIST TESTS");
-		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		modifiedAddFirst(generatePokemon());
 		iterate();
 		modifiedRemoveFirst();
 		iterate();
-		modifiedAddLast(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		modifiedAddLast(generatePokemon());
 		iterate();
 		modifiedRemoveLast();
 		iterate();
@@ -190,12 +194,12 @@ public class H_LinearDriver {
 
 	public static void twoElementTest() {
 		System.out.println("TWO-ELEMENT LIST TESTS");
-		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
-		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		modifiedAddFirst(generatePokemon());
+		modifiedAddFirst(generatePokemon());
 		iterate();
 		modifiedRemoveLast();
 		iterate();
-		modifiedAddLast(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		modifiedAddLast(generatePokemon());
 		iterate();
 		modifiedRemoveFirst();
 		iterate();
@@ -209,15 +213,15 @@ public class H_LinearDriver {
 
 	public static void threeElementTest() {
 		System.out.println("THREE-ELEMENT LIST TESTS");
-		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		modifiedAddFirst(generatePokemon());
 		modifiedAddFirst(TEST_POKEMON);
-		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		modifiedAddFirst(generatePokemon());
 		iterate();
 		modifiedRemoveFirst();
-		modifiedAddLast(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		modifiedAddLast(generatePokemon());
 		iterate();
 		modifiedRemoveLast();
-		modifiedAddFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+		modifiedAddFirst(generatePokemon());
 		iterate();
 		modifiedRemove(TEST_POKEMON);
 		iterate();
@@ -348,7 +352,7 @@ public class H_LinearDriver {
 
 	public static void buildList(int listSize) {
 		for (int n = 1; n <= listSize; n++)
-			list.addFirst(new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1)));
+			list.addFirst(generatePokemon());
 	}
 
 	public static void modifiedContains(Pokemon obj) {
