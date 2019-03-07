@@ -12,10 +12,10 @@ public class H_LinearDriver {
 		twoElementTest();
 		threeElementTest();
 		emptyListTest();
-		largeListTest();		
+		largeListTest();
 		failFastTest();
 	}
-	
+
 	public static Pokemon generatePokemon() {
 		return new Pokemon((int) (Math.random() * (Pokemon.LAST_POKEMON - 1) + 1));
 	}
@@ -114,7 +114,7 @@ public class H_LinearDriver {
 			if (curr.compareTo(TEST_POKEMON) == 0)
 				modifiedRemove(TEST_POKEMON);
 	}
-	
+
 	public static void modifiedPeekFirst() {
 		Pokemon result = list.peekFirst();
 
@@ -201,22 +201,22 @@ public class H_LinearDriver {
 	}
 
 	public static void iterate() {
+		int elementCount = 0;
 		int itemsInLine = 0;
 
-		System.out.print("Should print " + list.size() + " element");
-		if (list.size() != 1)
-			System.out.print("s");
-		if (list.size() != 0)
-			System.out.print(" from " + list.peekFirst() + " to " + list.peekLast());
-		System.out.println(":");
-
+		System.out.println("iterate result:");
 		for (Pokemon node : list) {
+			if (elementCount == list.size() - 1) {
+				System.out.print(node);
+				break;
+			}
 			if (itemsInLine == 10) {
 				System.out.println();
 				itemsInLine = 0;
 			}
 			System.out.print(node + ", ");
 			itemsInLine++;
+			elementCount++;
 		}
 		System.out.println();
 	}

@@ -282,22 +282,22 @@ public class H_StackDriver {
 	}
 	
 	public static void iterate() {
+		int elementCount = 0;
 		int itemsInLine = 0;
 
-		System.out.print("Should print " + stack.size() + " element");
-		if (stack.size() != 1)
-			System.out.print("s");
-		if (stack.size() != 0)
-			System.out.print(" starting with " + stack.peek());
-		System.out.println(":");
-
+		System.out.println("iterate result:");
 		for (Pokemon node : stack) {
+			if (elementCount == stack.size() - 1) {
+				System.out.print(node);
+				break;
+			}
 			if (itemsInLine == 10) {
 				System.out.println();
 				itemsInLine = 0;
 			}
 			System.out.print(node + ", ");
 			itemsInLine++;
+			elementCount++;
 		}
 		System.out.println();
 	}

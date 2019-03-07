@@ -143,22 +143,22 @@ public class H_QueueDriver {
 	}
 
 	public static void iterate() {
+		int elementCount = 0;
 		int itemsInLine = 0;
 
-		System.out.print("Should print " + queue.size() + " element");
-		if (queue.size() != 1)
-			System.out.print("s");
-		if (queue.size() != 0)
-			System.out.print(" starting with " + queue.peek());
-		System.out.println(":");
-
+		System.out.println("iterate result:");
 		for (Pokemon node : queue) {
+			if (elementCount == queue.size() - 1) {
+				System.out.print(node);
+				break;
+			}
 			if (itemsInLine == 10) {
 				System.out.println();
 				itemsInLine = 0;
 			}
 			System.out.print(node + ", ");
 			itemsInLine++;
+			elementCount++;
 		}
 		System.out.println();
 	}
