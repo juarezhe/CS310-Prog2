@@ -45,13 +45,14 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	@Override
 	public boolean addFirst(E obj) {
 		Node<E> newNode = new Node<E>(obj);
-
 		newNode.next = this.head;
+		
 		if (this.head != null)
 			this.head.previous = newNode;
-		this.head = newNode;
 		if (this.tail == null)
-			this.tail = this.head;
+			this.tail = newNode;
+		
+		this.head = newNode;
 		this.currentSize++;
 		this.modificationCounter++;
 		return true;
@@ -64,13 +65,14 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	@Override
 	public boolean addLast(E obj) {
 		Node<E> newNode = new Node<E>(obj);
-
 		newNode.previous = this.tail;
+		
 		if (this.tail != null)
 			this.tail.next = newNode;
-		this.tail = newNode;
 		if (this.head == null)
-			this.head = this.tail;
+			this.head = newNode;
+		
+		this.tail = newNode;
 		this.currentSize++;
 		this.modificationCounter++;
 		return true;
@@ -84,6 +86,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	public E removeFirst() {
 		if (this.head == null)
 			return null;
+		
 		E dataToReturn = this.head.data;
 		
 		if (this.head == this.tail)
@@ -105,6 +108,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	public E removeLast() {
 		if (this.tail == null)
 			return null;
+		
 		E dataToReturn = this.tail.data;
 		
 		if (this.tail == this.head)
@@ -144,6 +148,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 			return (E) removeFirst();
 		if (curr == this.tail)
 			return (E) removeLast();
+		
 		curr.previous.next = curr.next;
 		curr.next.previous = curr.previous;
 		this.currentSize--;
@@ -157,9 +162,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public E peekFirst() {
-		if (this.head == null)
-			return null;
-		return this.head.data;
+		return (this.head == null) ? null : this.head.data;
 	}
 
 	/*
@@ -168,9 +171,7 @@ public class LinearList<E extends Comparable<E>> implements LinearListADT<E> {
 	 */
 	@Override
 	public E peekLast() {
-		if (this.tail == null)
-			return null;
-		return this.tail.data;
+		return (this.tail == null) ? null : this.tail.data;
 	}
 
 	/*

@@ -6,27 +6,27 @@ public class H_LinearDriver {
 
 	private static class Pokemon implements Comparable<Pokemon> {
 		private static final int LAST_POKEMON = 809;
-		private static final String[] POKEMON_NAMES = { null, "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon",
-				"Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle",
-				"Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow",
-				"Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "NidoranM", "Nidorina", "Nidoqueen",
-				"NidoranF", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Vulpix", "Ninetales", "Jigglypuff",
-				"Wigglytuff", "Zubat", "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat",
-				"Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape",
-				"Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop",
-				"Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel", "Tentacool", "Tentacruel", "Geodude",
-				"Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite", "Magneton", "Farfetch'd",
-				"Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", "Haunter",
-				"Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode", "Exeggcute",
-				"Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing",
-				"Rhyhorn", "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking",
-				"Staryu", "Starmie", "Mr. Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros",
-				"Magikarp", "Gyarados", "Lapras", "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon",
-				"Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres",
-				"Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew", "Chikorita", "Bayleef", "Meganium", "Cyndaquil",
-				"Quilava", "Typhlosion", "Totodile", "Croconaw", "Feraligatr", "Sentret", "Furret", "Hoothoot",
-				"Noctowl", "Ledyba", "Ledian", "Spinarak", "Ariados", "Crobat", "Chinchou", "Lanturn", "Pichu",
-				"Cleffa", "Igglybuff", "Togepi", "Togetic", "Natu", "Xatu", "Mareep", "Flaaffy", "Ampharos",
+		private static final String[] POKEMON_NAMES = { null, "Bulbasaur", "Ivysaur", "Venusaur", "Charmander",
+				"Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree",
+				"Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow",
+				"Fearow", "Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "NidoranM", "Nidorina",
+				"Nidoqueen", "NidoranF", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Vulpix", "Ninetales",
+				"Jigglypuff", "Wigglytuff", "Zubat", "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect",
+				"Venonat", "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey",
+				"Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam",
+				"Machop", "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel", "Tentacool", "Tentacruel",
+				"Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite", "Magneton",
+				"Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly",
+				"Haunter", "Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode",
+				"Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing",
+				"Weezing", "Rhyhorn", "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen",
+				"Seaking", "Staryu", "Starmie", "Mr. Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir",
+				"Tauros", "Magikarp", "Gyarados", "Lapras", "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon",
+				"Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno", "Zapdos",
+				"Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew", "Chikorita", "Bayleef", "Meganium",
+				"Cyndaquil", "Quilava", "Typhlosion", "Totodile", "Croconaw", "Feraligatr", "Sentret", "Furret",
+				"Hoothoot", "Noctowl", "Ledyba", "Ledian", "Spinarak", "Ariados", "Crobat", "Chinchou", "Lanturn",
+				"Pichu", "Cleffa", "Igglybuff", "Togepi", "Togetic", "Natu", "Xatu", "Mareep", "Flaaffy", "Ampharos",
 				"Bellossom", "Marill", "Azumarill", "Sudowoodo", "Politoed", "Hoppip", "Skiploom", "Jumpluff", "Aipom",
 				"Sunkern", "Sunflora", "Yanma", "Wooper", "Quagsire", "Espeon", "Umbreon", "Murkrow", "Slowking",
 				"Misdreavus", "Unown", "Wobbuffet", "Girafarig", "Pineco", "Forretress", "Dunsparce", "Gligar",
@@ -102,7 +102,7 @@ public class H_LinearDriver {
 				"Poipole", "Naganadel", "Stakataka", "Blacephalon", "Zeraora", "Meltan", "Melmetal" };
 		private int mNumber;
 		private String mName;
-
+	
 		/*
 		 * Constructor - creates new Pokemon using National Pokedex number
 		 */
@@ -112,7 +112,7 @@ public class H_LinearDriver {
 			this.mNumber = number;
 			this.mName = POKEMON_NAMES[number];
 		}
-
+	
 		/*
 		 * Constructor - creates new Pokemon using name (capitalization doesn't matter)
 		 */
@@ -122,25 +122,22 @@ public class H_LinearDriver {
 				if (POKEMON_NAMES[idx].toLowerCase().compareTo(name.toLowerCase()) == 0)
 					break;
 			}
-			if (idx == LAST_POKEMON + 1)
+			if (idx > LAST_POKEMON)
 				throw new RuntimeException("No such Pokemon.");
-			else {
-				this.mNumber = idx;
-				this.mName = POKEMON_NAMES[idx];
-			}
+			this.mNumber = idx;
+			this.mName = POKEMON_NAMES[idx];
 		}
-
+	
 		/*
 		 * (non-Javadoc)
-		 * @see java.lang.Object#toString()
-		 * Output: [###-Name]
+		 * 
+		 * @see java.lang.Object#toString() Output: [###-Name]
 		 */
 		@Override
 		public String toString() {
-			String stringToReturn = "[" + this.mNumber + "-" + this.mName + "]";
-			return stringToReturn;
+			return "[" + this.mNumber + "-" + this.mName + "]";
 		}
-
+	
 		@Override
 		public int compareTo(Pokemon o) {
 			if (this.mNumber < o.mNumber)
