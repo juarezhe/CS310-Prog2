@@ -17,7 +17,7 @@ public class H_LinearDriver {
 	}
 	
 	public static Pokemon generatePokemon() {
-		return new Pokemon((int) Math.floor(Math.random() * (Pokemon.LAST_POKEMON - 1) + 1));
+		return new Pokemon((int) (Math.random() * (Pokemon.LAST_POKEMON - 1) + 1));
 	}
 
 	public static void emptyListTest() {
