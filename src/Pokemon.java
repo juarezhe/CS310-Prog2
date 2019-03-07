@@ -121,7 +121,9 @@ public class Pokemon implements Comparable<Pokemon> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see java.lang.Object#toString() Output: [###-Name]
+	 * Output: [###-Name]
+	 * 
+	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
