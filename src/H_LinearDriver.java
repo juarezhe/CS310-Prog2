@@ -195,15 +195,19 @@ public class H_LinearDriver {
 	public static void twoElementTest() {
 		System.out.println("TWO-ELEMENT LIST TESTS");
 		modifiedAddFirst(generatePokemon());
-		modifiedAddFirst(generatePokemon());
+		modifiedAddLast(TEST_POKEMON);
+		iterate();
+		modifiedRemoveFirst();
+		iterate();
+		modifiedAddLast(generatePokemon());
 		iterate();
 		modifiedRemoveLast();
 		iterate();
 		modifiedAddLast(generatePokemon());
 		iterate();
-		modifiedRemoveFirst();
+		modifiedRemove(TEST_POKEMON);
 		iterate();
-		modifiedAddFirst(TEST_POKEMON);
+		modifiedAddLast(TEST_POKEMON);
 		iterate();
 		modifiedRemove(TEST_POKEMON);
 		iterate();
@@ -218,10 +222,20 @@ public class H_LinearDriver {
 		modifiedAddFirst(generatePokemon());
 		iterate();
 		modifiedRemoveFirst();
+		iterate();
 		modifiedAddLast(generatePokemon());
 		iterate();
 		modifiedRemoveLast();
-		modifiedAddFirst(generatePokemon());
+		iterate();
+		modifiedAddLast(TEST_POKEMON);
+		iterate();
+		modifiedRemove(TEST_POKEMON);
+		iterate();
+		modifiedAddLast(generatePokemon());
+		iterate();
+		modifiedRemove(TEST_POKEMON);
+		iterate();
+		modifiedAddLast(TEST_POKEMON);
 		iterate();
 		modifiedRemove(TEST_POKEMON);
 		iterate();
@@ -233,6 +247,7 @@ public class H_LinearDriver {
 		System.out.println("LARGE LISTS TESTS");
 		buildList(1000);
 		iterate();
+		modifiedContains(TEST_POKEMON);
 		while (list.contains(TEST_POKEMON))
 			modifiedRemove(TEST_POKEMON);
 		modifiedClear();
@@ -360,8 +375,8 @@ public class H_LinearDriver {
 
 		System.out.print("search result:\t\t");
 		if (result == true)
-			System.out.println(obj + " successfully found");
+			System.out.println("found " + obj);
 		else
-			System.out.println(obj + " could not be found");
+			System.out.println("couldn't find " + obj);
 	}
 }

@@ -222,6 +222,7 @@ public class H_QueueDriver {
 		modifiedRemove(TEST_POKEMON);
 		iterate();
 		modifiedEnqueue(TEST_POKEMON);
+		iterate();
 		modifiedRemove(TEST_POKEMON);
 		iterate();
 		modifiedMakeEmpty();
@@ -232,6 +233,7 @@ public class H_QueueDriver {
 		System.out.println("LARGE LISTS TESTS");
 		buildList(1000);
 		iterate();
+		modifiedContains(TEST_POKEMON);
 		while (queue.contains(TEST_POKEMON))
 			modifiedRemove(TEST_POKEMON);
 		modifiedMakeEmpty();
@@ -257,7 +259,7 @@ public class H_QueueDriver {
 			result = data;
 		System.out.print("enqueue result:\t");
 		if (result.compareTo(obj) == 0)
-			System.out.println(obj + " successfully added");
+			System.out.println("added " + obj);
 		else
 			System.out.println("not sure what happened...");
 	}
@@ -269,7 +271,7 @@ public class H_QueueDriver {
 		if (result == null && queue.isEmpty())
 			System.out.println("list empty");
 		else if (result != null)
-			System.out.println(result + " successfully removed");
+			System.out.println("removed " + result);
 		else
 			System.out.println("not sure what happened...");
 	}
@@ -282,13 +284,19 @@ public class H_QueueDriver {
 	public static void iterate() {
 		int itemsInLine = 0;
 
-		System.out.println("Should print " + queue.size() + " elements starting with " + queue.peek() + ":");
-		for (Pokemon obj : queue) {
-			if (itemsInLine == 50) {
+		System.out.print("Should print " + queue.size() + " element");
+		if (queue.size() != 1)
+			System.out.print("s");
+		if (queue.size() != 0)
+			System.out.print(" starting with " + queue.peek());
+		System.out.println(":");
+
+		for (Pokemon node : queue) {
+			if (itemsInLine == 10) {
 				System.out.println();
 				itemsInLine = 0;
 			}
-			System.out.print(obj + ", ");
+			System.out.print(node + ", ");
 			itemsInLine++;
 		}
 		System.out.println();
@@ -309,9 +317,9 @@ public class H_QueueDriver {
 
 		System.out.print("search result:\t");
 		if (result == true)
-			System.out.println(obj + " successfully found");
+			System.out.println("found " + obj);
 		else
-			System.out.println(obj + " could not be found");
+			System.out.println("couldn't find " + obj);
 	}
 
 	public static void modifiedRemove(Pokemon obj) {
@@ -321,7 +329,7 @@ public class H_QueueDriver {
 		if (result == false && queue.isEmpty())
 			System.out.println("list empty");
 		else if (result == true)
-			System.out.println(obj + " successfully removed");
+			System.out.println("removed " + obj);
 		else
 			System.out.println("not sure what happened...");
 	}
