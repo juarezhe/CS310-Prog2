@@ -1,10 +1,20 @@
+/*
+ * Program #2 Queue that implements a behind-the-scenes LinearList
+ * 
+ * CS-310
+ * 
+ * 13 March 2019
+ * 
+ * @author Hannah Juarez cssc1481
+ */
+
 package data_structures;
 
 import java.util.Iterator;
 
 public class Queue<E extends Comparable<E>> implements Iterable<E> {
 	private LinearListADT<E> queue;
-	
+
 	/*
 	 * Default constructor
 	 */
