@@ -137,16 +137,11 @@ public class H_QueueDriver {
 			System.out.println("not sure what happened...");
 	}
 
-	public static void modifiedSize() {
-		System.out.print("size:\t\t\t");
-		System.out.println(queue.size());
-	}
-
 	public static void iterate() {
 		int elementCount = 0;
 		int itemsInLine = 0;
 
-		System.out.print("iterate result:\t\t");
+		System.out.print("iterate result:\t");
 		for (Pokemon node : queue) {
 			if (elementCount == queue.size() - 1) {
 				System.out.print(node);
@@ -154,7 +149,7 @@ public class H_QueueDriver {
 			}
 			if (itemsInLine == 10) {
 				System.out.println();
-				System.out.print("\t\t\t");
+				System.out.print("\t\t");
 				itemsInLine = 0;
 			}
 			System.out.print(node + ", ");

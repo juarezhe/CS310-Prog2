@@ -195,11 +195,6 @@ public class H_LinearDriver {
 			System.out.println(obj + " does not exist in the list");
 	}
 
-	public static void modifiedSize() {
-		System.out.print("size:\t\t\t");
-		System.out.println(list.size());
-	}
-
 	public static void iterate() {
 		int elementCount = 0;
 		int itemsInLine = 0;
